@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SD Printings — Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-page: oklch(15% 0.02 300);
+    --ink-page: oklch(94% 0.01 300);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg-page);
+    color: var(--ink-page);
+    font-family: 'Manrope', sans-serif;
+    padding: 48px 24px 96px;
+  }
+  .intro {
+    max-width: 720px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+  .intro h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    margin: 0 0 12px;
+    letter-spacing: 0.01em;
+  }
+  .intro p {
+    opacity: 0.7;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .directions {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 28px;
+  }
+  .card {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid oklch(100% 0 0 / 0.08);
+  }
+  .badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+    z-index: 5;
+  }
+  .card-inner { padding: 32px 28px 36px; min-height: 100%; }
+  .dir-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0 0 6px;
+  }
+  .dir-name {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 18px;
+  }
+  .swatches {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    flex: 1;
+    min-width: 56px;
+  }
+  .swatch-color {
+    height: 52px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    border: 1px solid oklch(100% 0 0 / 0.1);
+  }
+  .swatch-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    line-height: 1.4;
+    opacity: 0.75;
+  }
+  .type-sample {
+    border-radius: 12px;
+    padding: 26px 22px;
+    margin-bottom: 20px;
+  }
+  .thesis-sample {
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+  }
+  .body-sample {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 14px;
+    opacity: 0.85;
+  }
+  .utility-sample {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .reason {
+    font-size: 13.5px;
+    line-height: 1.6;
+    opacity: 0.75;
+    margin: 0;
+  }
+  .font-tags {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    opacity: 0.55;
+    margin: 0 0 14px;
+  }
+  .instructions {
+    max-width: 720px;
+    margin: 56px auto 0;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.65;
+    line-height: 1.6;
+  }
+
+  /* ===== Direction 1: Filigree Ink ===== */
+  .d1 { background: oklch(20% 0.045 320); color: oklch(96% 0.01 320); }
+  .d1 .badge { background: oklch(65% 0.22 350); color: oklch(15% 0.02 350); }
+  .d1 .type-sample { background: oklch(16% 0.04 320); border: 1px solid oklch(100% 0 0 / 0.06); }
+  .d1 .thesis-sample { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; color: oklch(96% 0.01 320); }
+  .d1 .body-sample { font-family: 'Manrope', sans-serif; }
+  .d1 .utility-sample { font-family: 'JetBrains Mono', monospace; color: oklch(65% 0.22 350); }
+
+  /* ===== Direction 2: Textile Bloom ===== */
+  .d2 { background: oklch(96% 0.015 335); color: oklch(24% 0.05 320); }
+  .d2 .badge { background: oklch(45% 0.19 300); color: oklch(97% 0.01 300); }
+  .d2 .type-sample { background: oklch(99% 0.008 335); border: 1px solid oklch(0% 0 0 / 0.06); }
+  .d2 .thesis-sample { font-family: 'Fraunces', serif; font-weight: 500; color: oklch(24% 0.05 320); }
+  .d2 .body-sample { font-family: 'Sora', sans-serif; }
+  .d2 .utility-sample { font-family: 'JetBrains Mono', monospace; color: oklch(45% 0.19 300); }
+  .d2 .dir-label, .d2 .reason { opacity: 0.6; }
+
+  /* ===== Direction 3: Print Studio Craft ===== */
+  .d3 { background: oklch(19% 0.03 310); color: oklch(95% 0.01 310); }
+  .d3 .badge { background: oklch(68% 0.24 355); color: oklch(15% 0.02 355); }
+  .d3 .type-sample { background: oklch(24% 0.04 310); border: 1px solid oklch(100% 0 0 / 0.06); }
+  .d3 .thesis-sample { font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; color: oklch(95% 0.01 310); }
+  .d3 .body-sample { font-family: 'IBM Plex Sans', sans-serif; }
+  .d3 .utility-sample { font-family: 'IBM Plex Mono', monospace; color: oklch(68% 0.24 355); }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>SD Printings — three directions</h1>
+  <p>Thesis: "Quality prints, customers who never turn back."<br>
+  Each direction below is a genuinely different read of your logo's filigree detail and your violet-and-pink scene. Reply <strong>1, 2, or 3</strong> — or say nothing and I'll build with the recommended one.</p>
+</div>
+
+<div class="directions">
+
+  <!-- Direction 1 -->
+  <div class="card d1">
+    <div class="badge">Recommended</div>
+    <div class="card-inner">
+      <p class="dir-label">Direction 1</p>
+      <h2 class="dir-name">Filigree Ink</h2>
+
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:oklch(20% 0.045 320)"></div><div class="swatch-label">bg<br>20% .045 320</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(26% 0.05 320)"></div><div class="swatch-label">surface<br>26% .05 320</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(65% 0.22 350)"></div><div class="swatch-label">accent<br>65% .22 350</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(55% 0.09 300)"></div><div class="swatch-label">violet<br>55% .09 300</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(96% 0.01 320)"></div><div class="swatch-label">ink<br>96% .01 320</div></div>
+      </div>
+
+      <p class="font-tags">Display: Cormorant Garamond italic · Body: Manrope · Utility: JetBrains Mono</p>
+      <div class="type-sample">
+        <p class="thesis-sample">Quality prints, customers who never turn back.</p>
+        <p class="body-sample">Every shirt, saree and custom order is pressed by the same five hands that opened SD Printings — that's the difference you can feel.</p>
+        <p class="utility-sample">Tshirts — Sarees — Custom</p>
+      </div>
+
+      <p class="reason">Straight from the logo's own hand-drawn scrollwork: a deep jewel-toned violet ground, one hot-pink accent, and an italic serif with real flourish. Quiet luxury with craft in every curve.</p>
+    </div>
+  </div>
+
+  <!-- Direction 2 -->
+  <div class="card d2">
+    <div class="card-inner">
+      <p class="dir-label">Direction 2</p>
+      <h2 class="dir-name">Textile Bloom</h2>
+
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:oklch(96% 0.015 335)"></div><div class="swatch-label">bg<br>96% .015 335</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(93% 0.03 335)"></div><div class="swatch-label">surface<br>93% .03 335</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(45% 0.19 300)"></div><div class="swatch-label">accent<br>45% .19 300</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(75% 0.13 350)"></div><div class="swatch-label">pink<br>75% .13 350</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(24% 0.05 320)"></div><div class="swatch-label">ink<br>24% .05 320</div></div>
+      </div>
+
+      <p class="font-tags">Display: Fraunces · Body: Sora · Utility: JetBrains Mono</p>
+      <div class="type-sample">
+        <p class="thesis-sample">Quality prints, customers who never turn back.</p>
+        <p class="body-sample">Every shirt, saree and custom order is pressed by the same five hands that opened SD Printings — that's the difference you can feel.</p>
+        <p class="utility-sample">Tshirts — Sarees — Custom</p>
+      </div>
+
+      <p class="reason">Reads like fabric held up to daylight — a soft pink-white ground, ink-violet type, and a warm serif that echoes drape and print rather than screen or steel. Light, tactile, made for showing garments.</p>
+    </div>
+  </div>
+
+  <!-- Direction 3 -->
+  <div class="card d3">
+    <div class="card-inner">
+      <p class="dir-label">Direction 3</p>
+      <h2 class="dir-name">Print Studio Craft</h2>
+
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background:oklch(19% 0.03 310)"></div><div class="swatch-label">bg<br>19% .03 310</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(24% 0.04 310)"></div><div class="swatch-label">surface<br>24% .04 310</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(68% 0.24 355)"></div><div class="swatch-label">accent<br>68% .24 355</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(50% 0.15 300)"></div><div class="swatch-label">violet<br>50% .15 300</div></div>
+        <div class="swatch"><div class="swatch-color" style="background:oklch(95% 0.01 310)"></div><div class="swatch-label">ink<br>95% .01 310</div></div>
+      </div>
+
+      <p class="font-tags">Display: Space Grotesk · Body: IBM Plex Sans · Utility: IBM Plex Mono</p>
+      <div class="type-sample">
+        <p class="thesis-sample">QUALITY PRINTS, CUSTOMERS WHO NEVER TURN BACK.</p>
+        <p class="body-sample">Every shirt, saree and custom order is pressed by the same five hands that opened SD Printings — that's the difference you can feel.</p>
+        <p class="utility-sample">Tshirts — Sarees — Custom</p>
+      </div>
+
+      <p class="reason">Built like a press ticket: bold condensed type, mono labels like registration marks, plum-and-magenta straight off a fresh print run. Graphic, confident, workshop energy.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="instructions">
+  Reply with <strong>1</strong>, <strong>2</strong>, or <strong>3</strong> to pick your direction.
+</div>
+
+</body>
+</html>
